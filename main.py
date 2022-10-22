@@ -4,7 +4,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, SubmitField
 from wtforms.validators import DataRequired
 from flask_wtf.csrf import CSRFProtect
+
 import requests
+import os
 # from rate_dict import currency_dict
 
 
@@ -16,7 +18,7 @@ csrf = CSRFProtect(app)
 
 def get_rates():
     api_url = 'https://api.apilayer.com/exchangerates_data/latest?base=USD'
-    api_key = 'QRvp0kbjyIXQDKIWuUps4MQi7TEMHF4T'
+    api_key = os.environ.get('API_KEY')
 
     payload = {}
     headers = {
